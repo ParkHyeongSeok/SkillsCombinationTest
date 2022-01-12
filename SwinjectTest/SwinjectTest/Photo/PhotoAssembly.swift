@@ -12,8 +12,21 @@ class PhotoAssembly: Assembly {
     func assemble(container: Container) {
         let safeResolver = container.synchronize()
         
+        container.register(NetworkManagerType.self, name: "Alamofire") { resolver in
+            return AlamofireManager()
+        }
+        
+        container.register(NetworkManagerType.self, name: "Moya") { resolver in
+            return MoyaManager()
+        }
+        
+        container.register(NetworkManagerType.self, name: "Mock") { resolver in
+            return MockNetworkManager()
+        }
+        
         container.register(PhotoReactor.self) { resolver in
-            return PhotoReactor()
+            let networkManager = safeResolver.resolve(NetworkManagerType.self, name: "Alamofire")!
+            return PhotoReactor(networkManager: networkManager)
         }
         
         container.register(PhotoViewController.self) { resolver in

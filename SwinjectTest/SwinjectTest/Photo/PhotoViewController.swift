@@ -22,6 +22,11 @@ class PhotoViewController: UIViewController, View {
         $0.font = UIFont(name: MyFont.APPLE_COLOR_EMOJI, size: 30)
     }
     
+    private let testButton = UIButton().then {
+        $0.setTitle("연결 테스트", for: .normal)
+        $0.setTitleColor(.red, for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeConstraints()
@@ -37,12 +42,25 @@ class PhotoViewController: UIViewController, View {
         titleLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
+        
+        view.addSubview(testButton)
+        testButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+            make.height.equalTo(30)
+            make.width.equalTo(100)
+        }
     }
     
     func bind(reactor: PhotoReactor) {
         reactor.state.map { $0.query }
         .bind(to: titleLabel.rx.text)
         .disposed(by: disposeBag)
+        
+        testButton.rx.tap
+            .map { PhotoReactor.Action.searchButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
 }

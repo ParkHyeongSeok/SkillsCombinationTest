@@ -30,8 +30,10 @@ class PhotoReactor: Reactor {
     }
     
     var initialState: State
+    let networkManager: NetworkManagerType
     
-    init() {
+    init(networkManager: NetworkManagerType) {
+        self.networkManager = networkManager
         self.initialState = State()
     }
     
@@ -44,14 +46,9 @@ class PhotoReactor: Reactor {
         case .inputQuery(let text):
             return Observable.just(.setQuery(text))
         case .searchButtonTapped:
-            let query = self.currentState.query
-            return Observable.concat([
-                Observable.just(.setIsLoading(true)),
-                fetchPhotos(query: query).map { .setPhotos($0) },
-                Observable.just(.setIsLoading(false))
-            ])
+            networkManager.testConnect()
+            return Observable.empty()
         }
-        
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
