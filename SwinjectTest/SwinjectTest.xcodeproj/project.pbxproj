@@ -9,12 +9,26 @@
 /* Begin PBXBuildFile section */
 		036184FB278DD09900F1F16B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036184FA278DD09900F1F16B /* AppDelegate.swift */; };
 		036184FD278DD09900F1F16B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036184FC278DD09900F1F16B /* SceneDelegate.swift */; };
-		036184FF278DD09900F1F16B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036184FE278DD09900F1F16B /* ViewController.swift */; };
 		03618504278DD09D00F1F16B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03618503278DD09D00F1F16B /* Assets.xcassets */; };
 		03618507278DD09D00F1F16B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03618505278DD09D00F1F16B /* LaunchScreen.storyboard */; };
 		03618512278DD09D00F1F16B /* SwinjectTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618511278DD09D00F1F16B /* SwinjectTestTests.swift */; };
 		0361851C278DD09D00F1F16B /* SwinjectTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361851B278DD09D00F1F16B /* SwinjectTestUITests.swift */; };
 		0361851E278DD09D00F1F16B /* SwinjectTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361851D278DD09D00F1F16B /* SwinjectTestUITestsLaunchTests.swift */; };
+		0361852D278E62FE00F1F16B /* PhotosReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361852C278E62FE00F1F16B /* PhotosReactor.swift */; };
+		03618533278E637100F1F16B /* Photographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618531278E637100F1F16B /* Photographer.swift */; };
+		03618534278E637100F1F16B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618532278E637100F1F16B /* Photo.swift */; };
+		03618536278E655100F1F16B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618535278E655100F1F16B /* PhotoViewController.swift */; };
+		03618538278E671200F1F16B /* AppAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618537278E671200F1F16B /* AppAssembler.swift */; };
+		0361853A278E679F00F1F16B /* PhotoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618539278E679F00F1F16B /* PhotoAssembly.swift */; };
+		0361853F278E6B9000F1F16B /* MyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361853E278E6B9000F1F16B /* MyFont.swift */; };
+		03618542278E6E8B00F1F16B /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618541278E6E8B00F1F16B /* MyColor.swift */; };
+		03618544278E701E00F1F16B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618543278E701E00F1F16B /* UIColor+Extension.swift */; };
+		03618548278E738100F1F16B /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618547278E738100F1F16B /* CoordinatorType.swift */; };
+		0361854A278E73D600F1F16B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618549278E73D600F1F16B /* AppCoordinator.swift */; };
+		0361854C278E758F00F1F16B /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361854B278E758F00F1F16B /* NetworkManagerType.swift */; };
+		0361854E278E75B800F1F16B /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361854D278E75B800F1F16B /* AlamofireManager.swift */; };
+		03618550278E75C000F1F16B /* MoyaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361854F278E75C000F1F16B /* MoyaManager.swift */; };
+		03618552278E75DC00F1F16B /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03618551278E75DC00F1F16B /* MockNetworkManager.swift */; };
 		29F525C072D09C49130278FB /* Pods_SwinjectTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0AA8AAB0F75A69DE0AC36F /* Pods_SwinjectTest.framework */; };
 		678E645A6BED8A01D1F1CC46 /* Pods_SwinjectTest_SwinjectTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9372BCEBA1474AA9988F2E6 /* Pods_SwinjectTest_SwinjectTestUITests.framework */; };
 		FEA4130D79D1CBFF2E7F8BE0 /* Pods_SwinjectTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2502999DB7DA2E30639D3870 /* Pods_SwinjectTestTests.framework */; };
@@ -42,7 +56,6 @@
 		036184F7278DD09900F1F16B /* SwinjectTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwinjectTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		036184FA278DD09900F1F16B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		036184FC278DD09900F1F16B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		036184FE278DD09900F1F16B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03618503278DD09D00F1F16B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03618506278DD09D00F1F16B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03618508278DD09D00F1F16B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +64,21 @@
 		03618517278DD09D00F1F16B /* SwinjectTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwinjectTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0361851B278DD09D00F1F16B /* SwinjectTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectTestUITests.swift; sourceTree = "<group>"; };
 		0361851D278DD09D00F1F16B /* SwinjectTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0361852C278E62FE00F1F16B /* PhotosReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosReactor.swift; sourceTree = "<group>"; };
+		03618531278E637100F1F16B /* Photographer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photographer.swift; sourceTree = "<group>"; };
+		03618532278E637100F1F16B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		03618535278E655100F1F16B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		03618537278E671200F1F16B /* AppAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembler.swift; sourceTree = "<group>"; };
+		03618539278E679F00F1F16B /* PhotoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssembly.swift; sourceTree = "<group>"; };
+		0361853E278E6B9000F1F16B /* MyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFont.swift; sourceTree = "<group>"; };
+		03618541278E6E8B00F1F16B /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		03618543278E701E00F1F16B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		03618547278E738100F1F16B /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		03618549278E73D600F1F16B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0361854B278E758F00F1F16B /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
+		0361854D278E75B800F1F16B /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		0361854F278E75C000F1F16B /* MoyaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaManager.swift; sourceTree = "<group>"; };
+		03618551278E75DC00F1F16B /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		2502999DB7DA2E30639D3870 /* Pods_SwinjectTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwinjectTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35034ED811BA34F9F5CD9B1B /* Pods-SwinjectTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwinjectTest.release.xcconfig"; path = "Target Support Files/Pods-SwinjectTest/Pods-SwinjectTest.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A1E2387CB2F7E9E3E33C1 /* Pods-SwinjectTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwinjectTest.debug.xcconfig"; path = "Target Support Files/Pods-SwinjectTest/Pods-SwinjectTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,11 +142,13 @@
 		036184F9278DD09900F1F16B /* SwinjectTest */ = {
 			isa = PBXGroup;
 			children = (
-				036184FA278DD09900F1F16B /* AppDelegate.swift */,
+				0361852B278E62C400F1F16B /* Photo */,
+				03618545278E733F00F1F16B /* NetworkManager */,
+				03618546278E737500F1F16B /* Coordinator */,
+				03618537278E671200F1F16B /* AppAssembler.swift */,
 				036184FC278DD09900F1F16B /* SceneDelegate.swift */,
-				036184FE278DD09900F1F16B /* ViewController.swift */,
-				03618503278DD09D00F1F16B /* Assets.xcassets */,
-				03618505278DD09D00F1F16B /* LaunchScreen.storyboard */,
+				036184FA278DD09900F1F16B /* AppDelegate.swift */,
+				0361852A278E624500F1F16B /* Resources */,
 				03618508278DD09D00F1F16B /* Info.plist */,
 			);
 			path = SwinjectTest;
@@ -139,6 +169,74 @@
 				0361851D278DD09D00F1F16B /* SwinjectTestUITestsLaunchTests.swift */,
 			);
 			path = SwinjectTestUITests;
+			sourceTree = "<group>";
+		};
+		0361852A278E624500F1F16B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03618540278E6E8100F1F16B /* Color */,
+				0361853B278E6B5E00F1F16B /* Font */,
+				03618503278DD09D00F1F16B /* Assets.xcassets */,
+				03618505278DD09D00F1F16B /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0361852B278E62C400F1F16B /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				03618539278E679F00F1F16B /* PhotoAssembly.swift */,
+				0361852C278E62FE00F1F16B /* PhotosReactor.swift */,
+				03618535278E655100F1F16B /* PhotoViewController.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		03618530278E635800F1F16B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03618532278E637100F1F16B /* Photo.swift */,
+				03618531278E637100F1F16B /* Photographer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0361853B278E6B5E00F1F16B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0361853E278E6B9000F1F16B /* MyFont.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		03618540278E6E8100F1F16B /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				03618543278E701E00F1F16B /* UIColor+Extension.swift */,
+				03618541278E6E8B00F1F16B /* MyColor.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		03618545278E733F00F1F16B /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0361854B278E758F00F1F16B /* NetworkManagerType.swift */,
+				0361854D278E75B800F1F16B /* AlamofireManager.swift */,
+				0361854F278E75C000F1F16B /* MoyaManager.swift */,
+				03618551278E75DC00F1F16B /* MockNetworkManager.swift */,
+				03618530278E635800F1F16B /* Model */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		03618546278E737500F1F16B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				03618547278E738100F1F16B /* CoordinatorType.swift */,
+				03618549278E73D600F1F16B /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		7DE00EA7C56170FB2196D621 /* Frameworks */ = {
@@ -402,9 +500,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				036184FF278DD09900F1F16B /* ViewController.swift in Sources */,
+				0361854C278E758F00F1F16B /* NetworkManagerType.swift in Sources */,
+				0361853A278E679F00F1F16B /* PhotoAssembly.swift in Sources */,
+				03618533278E637100F1F16B /* Photographer.swift in Sources */,
+				0361854A278E73D600F1F16B /* AppCoordinator.swift in Sources */,
+				03618548278E738100F1F16B /* CoordinatorType.swift in Sources */,
 				036184FB278DD09900F1F16B /* AppDelegate.swift in Sources */,
+				03618544278E701E00F1F16B /* UIColor+Extension.swift in Sources */,
 				036184FD278DD09900F1F16B /* SceneDelegate.swift in Sources */,
+				0361853F278E6B9000F1F16B /* MyFont.swift in Sources */,
+				03618542278E6E8B00F1F16B /* MyColor.swift in Sources */,
+				03618538278E671200F1F16B /* AppAssembler.swift in Sources */,
+				03618552278E75DC00F1F16B /* MockNetworkManager.swift in Sources */,
+				0361852D278E62FE00F1F16B /* PhotosReactor.swift in Sources */,
+				03618534278E637100F1F16B /* Photo.swift in Sources */,
+				03618550278E75C000F1F16B /* MoyaManager.swift in Sources */,
+				0361854E278E75B800F1F16B /* AlamofireManager.swift in Sources */,
+				03618536278E655100F1F16B /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

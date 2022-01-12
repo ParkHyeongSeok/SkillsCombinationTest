@@ -15,8 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController() // 루트 뷰컨트롤러 생성
-        window?.makeKeyAndVisible()
+        let appCoordinator = AppCoordinator(window: window)
+        appCoordinator.start()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
