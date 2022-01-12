@@ -10,6 +10,10 @@ target 'SwinjectTest' do
  pod 'Swinject'
  pod 'Pure'
  pod 'ReusableKit'
+ pod 'Alamofire'
+ pod 'Moya'
+ pod 'SnapKit'
+ pod 'Then'
   # Pods for SwinjectTest
 
   target 'SwinjectTestTests' do
