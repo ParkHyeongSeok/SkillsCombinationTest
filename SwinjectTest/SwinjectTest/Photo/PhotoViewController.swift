@@ -18,6 +18,7 @@ class PhotoViewController: UIViewController, View {
     
     private let titleLabel = UILabel().then {
         $0.text = "Title"
+        $0.textColor = UIColor.init(rgb: 0xD0E0E3)
         $0.font = UIFont(name: MyFont.APPLE_COLOR_EMOJI, size: 30)
     }
     
@@ -39,7 +40,9 @@ class PhotoViewController: UIViewController, View {
     }
     
     func bind(reactor: PhotoReactor) {
-        
+        reactor.state.map { $0.query }
+        .bind(to: titleLabel.rx.text)
+        .disposed(by: disposeBag)
     }
 
 }

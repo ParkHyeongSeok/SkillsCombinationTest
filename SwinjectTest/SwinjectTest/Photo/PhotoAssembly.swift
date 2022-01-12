@@ -10,14 +10,14 @@ import Swinject
 
 class PhotoAssembly: Assembly {
     func assemble(container: Container) {
-        let threadSafeContainer = container.synchronize()
+        let safeResolver = container.synchronize()
         
         container.register(PhotoReactor.self) { resolver in
             return PhotoReactor()
         }
         
         container.register(PhotoViewController.self) { resolver in
-            let photoReactor = threadSafeContainer.resolve(PhotoReactor.self)!
+            let photoReactor = safeResolver.resolve(PhotoReactor.self)!
             let photoVC = PhotoViewController()
             photoVC.reactor = photoReactor
             return photoVC
