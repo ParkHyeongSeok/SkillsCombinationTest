@@ -23,6 +23,8 @@ class PhotoViewController: BaseViewController, View {
     
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.minimumInteritemSpacing = 2
+        $0.minimumLineSpacing = 2
+        $0.scrollDirection = .vertical
     }
     
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
@@ -30,6 +32,7 @@ class PhotoViewController: BaseViewController, View {
     }
     
     var disposeBag: DisposeBag = DisposeBag()
+//    let coordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()

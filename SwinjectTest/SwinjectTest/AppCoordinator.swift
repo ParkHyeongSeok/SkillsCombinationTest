@@ -7,22 +7,22 @@
 
 import Foundation
 import UIKit
+import Swinject
 
 class AppCoordinator: CoordinatorType {
     var parentCoordinator: CoordinatorType? = nil
     var childCoordinator: [CoordinatorType] = []
+    
+    var assembler: Assembler
     var navigationController: UINavigationController = UINavigationController()
     
-    private(set) var window: UIWindow?
-    init(window: UIWindow?) {
-        self.window = window
+    init(assembler: Assembler, navigationController: UINavigationController) {
+        self.assembler = assembler
+        self.navigationController = navigationController
     }
     
     func start() {
-        let rootViewController = AppAssembler.assembler.resolver.resolve(PhotoViewController.self)!
-        navigationController.setViewControllers([rootViewController], animated: false)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        
     }
     
 }
