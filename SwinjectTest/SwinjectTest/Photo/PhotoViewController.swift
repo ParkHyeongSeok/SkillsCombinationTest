@@ -7,6 +7,8 @@
 
 import UIKit
 import ReactorKit
+import ReusableKit
+import RxDataSources
 import RxSwift
 import RxCocoa
 import SnapKit
@@ -14,28 +16,20 @@ import Then
 
 class PhotoViewController: BaseViewController, View {
     
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    private let titleLabel = UILabel().then {
-        $0.text = "Title"
-        $0.textColor = MyColor.TestColor
-        $0.font = UIFont(name: MyFont.APPLE_COLOR_EMOJI, size: 30)
-    }
-    
-    private let testButton = UIButton().then {
-        $0.setTitle("연결 테스트", for: .normal)
-        $0.setTitleColor(.red, for: .normal)
-    }
-    
     private let searchController = UISearchController(searchResultsController: nil).then {
         $0.searchBar.placeholder = "사진을 검색하세요."
         $0.hidesNavigationBarDuringPresentation = false
     }
     
-    private let photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    private let flowLayout = UICollectionViewFlowLayout().then {
+        $0.minimumInteritemSpacing = 2
+    }
+    
+    private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
         $0.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
     }
     
+    var disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,29 +45,47 @@ class PhotoViewController: BaseViewController, View {
     }
     
     private func makeConstraints() {
-        view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
-        
-        view.addSubview(testButton)
-        testButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
-            make.height.equalTo(30)
-            make.width.equalTo(100)
+        view.addSubview(photoCollectionView)
+        photoCollectionView.snp.makeConstraints { make in
+            make.top.left.bottom.right.equalToSuperview()
         }
     }
     
     func bind(reactor: PhotoReactor) {
-        reactor.state.map { $0.query }
-        .bind(to: titleLabel.rx.text)
+        
+        reactor.state.map { $0.photoSections }
+        .bind(to: photoCollectionView.rx.items(dataSource: createDataSources()))
         .disposed(by: disposeBag)
         
-        testButton.rx.tap
+        searchController.searchBar.rx.text.orEmpty
+            .map { PhotoReactor.Action.inputQuery($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        searchController.searchBar.rx.searchButtonClicked
             .map { PhotoReactor.Action.searchButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        photoCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+    
+    func createDataSources() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int, Photo>> {
+        return RxCollectionViewSectionedReloadDataSource<SectionModel<Int, Photo>>.init { datasource, collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return .init(frame: .zero) }
+            cell.rendering(photo: item)
+            return cell
+        }
     }
 
+}
+
+extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let space: CGFloat = 2
+        let width: CGFloat = (view.bounds.width - (space*2))/3
+        let height: CGFloat = width
+        return CGSize(width: width, height: height)
+    }
 }

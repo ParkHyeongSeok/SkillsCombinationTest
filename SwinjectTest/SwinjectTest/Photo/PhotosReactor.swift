@@ -9,6 +9,7 @@ import Foundation
 import ReactorKit
 import RxSwift
 import RxCocoa
+import Differentiator
 
 class PhotoReactor: Reactor {
     
@@ -19,13 +20,13 @@ class PhotoReactor: Reactor {
     
     enum Mutation {
         case setQuery(String)
-        case setPhotos([Photo])
+        case setPhotoSection([SectionModel<Int, Photo>])
         case setIsLoading(Bool)
     }
     
     struct State {
         var query = "car"
-        var photos = [Photo]()
+        var photoSections = [SectionModel<Int, Photo>]()
         var isLoding = false
     }
     
@@ -47,15 +48,18 @@ class PhotoReactor: Reactor {
             return Observable.just(.setQuery(text))
         case .searchButtonTapped:
             let query = self.currentState.query
-            return self.unsplashAPI.search(query).map { .setPhotos($0) }
+            return self.unsplashAPI.search(query)
+                .map { [SectionModel<Int, Photo>.init(model: 1, items: $0)] }
+                .map { .setPhotoSection($0) }
+                .debug()
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setPhotos(let photos):
-            newState.photos = photos
+        case .setPhotoSection(let section):
+            newState.photoSections = section
         case .setIsLoading(let isLoading):
             newState.isLoding = isLoading
         case .setQuery(let query):

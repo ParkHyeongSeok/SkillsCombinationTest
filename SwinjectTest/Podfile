@@ -6,6 +6,7 @@ target 'SwinjectTest' do
   use_frameworks!
  pod 'RxSwift'
  pod 'RxCocoa'
+ pod 'RxDataSources'
  pod 'ReactorKit'
  pod 'Swinject'
  pod 'Pure'

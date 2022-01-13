@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct NetworkResponse<Wrapper: Codable>: Codable {
+    var results: [Wrapper]
+}
+
 struct Photo: Codable {
     let image: PhotoImageURL
     let photographer: Photographer
