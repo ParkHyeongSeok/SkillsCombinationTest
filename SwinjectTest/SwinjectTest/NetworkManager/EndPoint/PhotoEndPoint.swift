@@ -13,6 +13,13 @@ enum PhotoEndPoint {
 }
 
 extension PhotoEndPoint: EndPointType {
+    
+    var headers: HTTPHeaders {
+        return [
+            .authorization("Qi4G9qPq4OGMycRtl3aHLlZNmCO99slGa3C9MDkj6rU")
+        ]
+    }
+    
     var baseURLString: String {
         return "https://api.unsplash.com/"
     }

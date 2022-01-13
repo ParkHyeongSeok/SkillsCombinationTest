@@ -13,9 +13,9 @@ import Alamofire
 protocol EndPointType: URLRequestConvertible {
     var baseURLString: String { get }
     var path: String { get }
+    var headers: HTTPHeaders { get }
     var httpMethod: HTTPMethod { get }
     var parameters: RequestParams { get }
-    
 }
 
 extension EndPointType {
@@ -27,7 +27,7 @@ extension EndPointType {
             throw NetworkError.urlConvert
         }
         
-        guard var urlRequest = try? URLRequest(url: url.appendingPathComponent(self.path), method: self.httpMethod, headers: nil) else {
+        guard var urlRequest = try? URLRequest(url: url.appendingPathComponent(self.path), method: self.httpMethod, headers: self.headers) else {
             throw NetworkError.urlRequestConvert
         }
         
