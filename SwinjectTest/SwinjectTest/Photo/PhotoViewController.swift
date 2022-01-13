@@ -12,13 +12,13 @@ import RxCocoa
 import SnapKit
 import Then
 
-class PhotoViewController: UIViewController, View {
+class PhotoViewController: BaseViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
     private let titleLabel = UILabel().then {
         $0.text = "Title"
-        $0.textColor = UIColor.init(rgb: 0xD0E0E3)
+        $0.textColor = MyColor.TestColor
         $0.font = UIFont(name: MyFont.APPLE_COLOR_EMOJI, size: 30)
     }
     
@@ -35,6 +35,7 @@ class PhotoViewController: UIViewController, View {
     
     func configureUI() {
         view.backgroundColor = .systemBackground
+        title = "Photo"
     }
     
     func makeConstraints() {

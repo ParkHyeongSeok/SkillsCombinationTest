@@ -19,7 +19,9 @@ class AppCoordinator: CoordinatorType {
     }
     
     func start() {
-        window?.rootViewController = AppAssembler.assembler.resolver.resolve(PhotoViewController.self)!
+        let rootViewController = AppAssembler.assembler.resolver.resolve(PhotoViewController.self)!
+        navigationController.setViewControllers([rootViewController], animated: false)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

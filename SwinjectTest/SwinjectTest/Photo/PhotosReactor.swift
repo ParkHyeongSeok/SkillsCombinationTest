@@ -30,10 +30,10 @@ class PhotoReactor: Reactor {
     }
     
     var initialState: State
-    let networkManager: NetworkManagerType
+    let unsplashAPI: UnsplashAPIType
     
-    init(networkManager: NetworkManagerType) {
-        self.networkManager = networkManager
+    init(unsplashAPI: UnsplashAPIType) {
+        self.unsplashAPI = unsplashAPI
         self.initialState = State()
     }
     
@@ -46,8 +46,8 @@ class PhotoReactor: Reactor {
         case .inputQuery(let text):
             return Observable.just(.setQuery(text))
         case .searchButtonTapped:
-            networkManager.testConnect()
-            return Observable.empty()
+            let query = self.currentState.query
+            return self.unsplashAPI.search(query).map { .setPhotos($0) }
         }
     }
     

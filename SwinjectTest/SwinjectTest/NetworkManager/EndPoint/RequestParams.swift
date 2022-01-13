@@ -8,7 +8,7 @@
 import Foundation
 
 enum RequestParams {
-    case query(_ parameter: Encodable?)
+    case query(_ parameter: String?)
     case body(_ parameter: Encodable?)
 }
 

@@ -7,6 +7,6 @@
 
 import UIKit
 
-struct MyFont {
+enum MyFont {
     static let APPLE_COLOR_EMOJI = "Apple Color Emoji"
 }

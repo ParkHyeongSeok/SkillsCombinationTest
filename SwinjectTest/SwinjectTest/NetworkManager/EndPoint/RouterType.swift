@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-
 /// should implement func asURLRequest() throws -> URLRequest
 protocol RouterType: URLRequestConvertible {
     var baseURLString: String { get }
@@ -33,9 +32,8 @@ extension RouterType {
         
         switch self.parameters {
         case .query(let request):
-            
-            let params = request?.toDictionary() ?? [:]
-            let queryParams = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            let params: [String:String?] = ["query":request]
+            let queryParams = params.map { URLQueryItem(name: $0.key, value: $0.value) }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
             components?.queryItems = queryParams
             urlRequest.url = components?.url
