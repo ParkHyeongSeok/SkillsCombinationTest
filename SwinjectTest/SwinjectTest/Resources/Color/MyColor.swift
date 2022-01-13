@@ -7,6 +7,6 @@
 
 import UIKit
 
-struct MyColor {
-    static let APPLE_COLOR_EMOJI = "Apple Color Emoji"
+enum MyColor {
+    static let TestColor = UIColor.init(rgb: 0xD0E0E3)
 }

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.5.0)
+  - Kingfisher (7.1.2)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -26,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Kingfisher
   - Moya
   - Pure
   - ReactorKit
@@ -39,6 +41,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Kingfisher
     - Moya
     - Pure
     - ReactorKit
@@ -53,6 +56,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Pure: 82d6f4438672a41d21ea6fadd126e1466db001c5
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
@@ -65,6 +69,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: a3d23a2c1bbb9c3872d1929f571c57ffd6c6371b
+PODFILE CHECKSUM: 18d194e692872a9036739d7d132174c5ddfd155e
 
 COCOAPODS: 1.11.2

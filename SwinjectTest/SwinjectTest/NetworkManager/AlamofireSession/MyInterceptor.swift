@@ -30,6 +30,7 @@ final class MyInterceptor: RequestInterceptor {
         completion(.success(request))
     }
     
+    // Request에서 Error가 발생했을 때, 재시도할 수 있는 기능을 제공한다.
     // validate 설정해줘야 이 메소드를 호출한다.
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         print("MyInterceptor - retry")
@@ -37,11 +38,8 @@ final class MyInterceptor: RequestInterceptor {
             completion(.doNotRetry)
             return
         }
-        
-        if !(200...400).contains(statusCode) {
-            completion(.doNotRetry)
-        }
-        
+        NotificationCenter.default.post(name: NSNotification.Name("statusCode"), object: statusCode)
+        completion(.doNotRetry)
     }
     
 }

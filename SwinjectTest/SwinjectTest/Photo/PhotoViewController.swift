@@ -12,13 +12,13 @@ import RxCocoa
 import SnapKit
 import Then
 
-class PhotoViewController: UIViewController, View {
+class PhotoViewController: BaseViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
     private let titleLabel = UILabel().then {
         $0.text = "Title"
-        $0.textColor = UIColor.init(rgb: 0xD0E0E3)
+        $0.textColor = MyColor.TestColor
         $0.font = UIFont(name: MyFont.APPLE_COLOR_EMOJI, size: 30)
     }
     
@@ -27,17 +27,30 @@ class PhotoViewController: UIViewController, View {
         $0.setTitleColor(.red, for: .normal)
     }
     
+    private let searchController = UISearchController(searchResultsController: nil).then {
+        $0.searchBar.placeholder = "사진을 검색하세요."
+        $0.hidesNavigationBarDuringPresentation = false
+    }
+    
+    private let photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeConstraints()
         configureUI()
     }
     
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .systemBackground
+        self.navigationItem.searchController = searchController
+        self.navigationItem.title = "Search"
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()

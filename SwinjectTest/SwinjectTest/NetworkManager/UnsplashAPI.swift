@@ -7,17 +7,23 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class UnsplashAPI: UnsplashAPIType {
     
-    func search(_ query: String, completion: @escaping (Result<[Photo], NetworkError>) -> Void) {
-        MySessionManager
-            .shared
-            .session
-            .request(MyRouter.searchPhoto(query))
-            .validate(statusCode: 200...300)
-            .response { response in
-                debugPrint(response)
-            }
+    func search(_ query: String) -> Observable<[Photo]> {
+        return Observable.create { observer in
+            SessionManager
+                .shared
+                .session
+                .request(MyRouter.searchPhoto(query))
+                .validate(statusCode: 200...300)
+                .response { response in
+                    debugPrint(response)
+                    observer.onNext([])
+                    observer.onCompleted()
+                }
+            return Disposables.create()
+        }
     }
 }

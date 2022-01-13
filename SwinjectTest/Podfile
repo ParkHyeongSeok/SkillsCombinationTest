@@ -14,6 +14,7 @@ target 'SwinjectTest' do
  pod 'Moya'
  pod 'SnapKit'
  pod 'Then'
+ pod 'Kingfisher'
   # Pods for SwinjectTest
 
   target 'SwinjectTestTests' do
