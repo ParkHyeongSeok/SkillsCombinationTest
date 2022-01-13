@@ -19,9 +19,13 @@ class UnsplashAPI: UnsplashAPIType {
                 .request(MyRouter.searchPhoto(query))
                 .validate(statusCode: 200...300)
                 .response { response in
-                    debugPrint(response)
-                    observer.onNext([])
-                    observer.onCompleted()
+                    do {
+                        let response = try JSONDecoder().decode(NetworkResponse<Photo>.self, from: response.data!)
+                        observer.onNext(response.results)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(error)
+                    }
                 }
             return Disposables.create()
         }

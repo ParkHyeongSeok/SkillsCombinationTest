@@ -15,7 +15,7 @@ enum MyRouter {
 extension MyRouter: RouterType {
     
     var baseURLString: String {
-        return "https://api.unsplash.com/"
+        return "https://api.unsplash.com"
     }
     
     var headers: HTTPHeaders? {
