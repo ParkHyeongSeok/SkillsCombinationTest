@@ -27,18 +27,30 @@ class PhotoViewController: BaseViewController, View {
         $0.setTitleColor(.red, for: .normal)
     }
     
+    private let searchController = UISearchController(searchResultsController: nil).then {
+        $0.searchBar.placeholder = "사진을 검색하세요."
+        $0.hidesNavigationBarDuringPresentation = false
+    }
+    
+    private let photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeConstraints()
         configureUI()
     }
     
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .systemBackground
-        title = "Photo"
+        self.navigationItem.searchController = searchController
+        self.navigationItem.title = "Search"
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
