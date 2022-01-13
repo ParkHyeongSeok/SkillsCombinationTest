@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UnsplashAPIType {
-    func search(_ request: URLRequest, completion: @escaping (Result<[Photo], NetworkError>) -> Void)
+    func search(_ query: String, completion: @escaping (Result<[Photo], NetworkError>) -> Void)
 }

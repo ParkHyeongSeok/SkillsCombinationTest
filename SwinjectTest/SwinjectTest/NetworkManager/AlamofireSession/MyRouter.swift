@@ -1,5 +1,5 @@
 //
-//  PhotoEndPoint.swift
+//  MyRouter.swift
 //  SwinjectTest
 //
 //  Created by 박형석 on 2022/01/13.
@@ -8,20 +8,21 @@
 import Foundation
 import Alamofire
 
-enum PhotoEndPoint {
+enum MyRouter {
     case searchPhoto(String)
 }
 
-extension PhotoEndPoint: EndPointType {
-    
-    var headers: HTTPHeaders {
-        return [
-            .authorization("Qi4G9qPq4OGMycRtl3aHLlZNmCO99slGa3C9MDkj6rU")
-        ]
-    }
+extension MyRouter: RouterType {
     
     var baseURLString: String {
         return "https://api.unsplash.com/"
+    }
+    
+    var headers: HTTPHeaders? {
+        return [
+            .contentType("application/json; charset=UTF-8"),
+            .accept("application/json; charset=UTF-8")
+        ]
     }
     
     var path: String {
@@ -44,4 +45,6 @@ extension PhotoEndPoint: EndPointType {
             return .query(request)
         }
     }
+
 }
+

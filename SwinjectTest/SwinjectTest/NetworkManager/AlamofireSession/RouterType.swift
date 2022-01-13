@@ -1,5 +1,5 @@
 //
-//  EndPointType.swift
+//  RouterType.swift
 //  SwinjectTest
 //
 //  Created by 박형석 on 2022/01/13.
@@ -10,15 +10,15 @@ import Alamofire
 
 
 /// should implement func asURLRequest() throws -> URLRequest
-protocol EndPointType: URLRequestConvertible {
+protocol RouterType: URLRequestConvertible {
     var baseURLString: String { get }
     var path: String { get }
-    var headers: HTTPHeaders { get }
+    var headers: HTTPHeaders? { get }
     var httpMethod: HTTPMethod { get }
     var parameters: RequestParams { get }
 }
 
-extension EndPointType {
+extension RouterType {
     
     /// Alamofire URLRequestConvertible extension method
     /// Returns a `URLRequest` or throws if an `Error` was encountered.
@@ -33,11 +33,20 @@ extension EndPointType {
         
         switch self.parameters {
         case .query(let request):
+            
             let params = request?.toDictionary() ?? [:]
             let queryParams = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
             components?.queryItems = queryParams
             urlRequest.url = components?.url
+            
+            // 이 작업도 URLEncodedFormParameterEncoder 사용해서 할 수 있음
+            // URLEncodedFormParameterEncoder 사용
+//            let paramsDic = [
+//                "query":"request의 스트링"
+//            ]
+//            urlRequest = try URLEncodedFormParameterEncoder().encode(paramsDic, into: urlRequest)
+            
         case .body(let request):
             let params = request?.toDictionary() ?? [:]
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params)
