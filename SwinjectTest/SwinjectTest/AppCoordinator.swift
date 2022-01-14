@@ -18,7 +18,9 @@ class AppCoordinator: CoordinatorType {
     }
     
     func start() {
-        let photoCoordinator = PhotoCoordinator(assembler: self.assembler, navigationController: self.navigationController)
+        let photoCoordinator = PhotoCoordinator(
+            assembler: self.assembler,
+            navigationController: self.navigationController)
         photoCoordinator.start()
     }
     

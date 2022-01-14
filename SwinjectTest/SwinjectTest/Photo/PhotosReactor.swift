@@ -51,7 +51,7 @@ class PhotoReactor: Reactor {
             return Observable.concat([
                 Observable.just(.setIsLoading(true)),
                 self.unsplashAPI.search(query)
-                    .map { [SectionModel<Int, Photo>.init(model: 1, items: $0)] }
+                    .map { [SectionModel<Int, Photo>.init(model: 0, items: $0)] }
                     .map { .setPhotoSection($0) },
                 Observable.just(.setIsLoading(false))
             ])
