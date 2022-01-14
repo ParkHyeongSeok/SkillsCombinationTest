@@ -17,9 +17,9 @@
 ### 앱 흐름도 및 구현 화면
 |앱 흐름도|구현 화면|
 |:-:|:-:|
-|![First Image](https://images.pexels.com/photos/585759/pexels-photo-585759.jpeg?h=750&w=1260)|![Second Image](https://images.pexels.com/photos/1335115/pexels-photo-1335115.jpeg?h=750&w=1260)|
+|![First Image](https://user-images.githubusercontent.com/77890228/149470530-29d00e5c-9095-4ffd-b33a-631d4ea867be.png)|![Second Image](https://user-images.githubusercontent.com/77890228/149470802-64e9d64a-8d14-44c7-916b-77becd0db5ad.png)|
 
-### 테스트 
+### 테스트 내역
 #### RxCocoa와 RxDataSources, ReusableKit을 함께 사용해보기
 * collectionView 적용기 : UnsplashAPI를 통해서 받아오는 데이터를 RxDataSources에서 사용할 데이터로 파싱, DataSource를 만들어, ReusableCell을 통해 collectionView에 적용
 
