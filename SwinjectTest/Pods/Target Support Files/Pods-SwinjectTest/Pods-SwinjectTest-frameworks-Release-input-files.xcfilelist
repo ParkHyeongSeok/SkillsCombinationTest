@@ -2,8 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-SwinjectTest/Pods-SwinjectTest-frameworks
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
-${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
-${BUILT_PRODUCTS_DIR}/Pure/Pure.framework
 ${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework
 ${BUILT_PRODUCTS_DIR}/ReusableKit/ReusableKit.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework

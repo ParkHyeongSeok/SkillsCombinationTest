@@ -11,10 +11,10 @@ import Then
 import Kingfisher
 
 class PhotoCollectionViewCell: UICollectionViewCell {
-    static let identifier = "PhotoCollectionViewCell"
     
     private let photo = UIImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     override init(frame: CGRect) {
@@ -28,7 +28,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = .systemGray6
     }
     
     private func makeConstraints() {

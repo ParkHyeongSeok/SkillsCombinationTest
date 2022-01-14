@@ -20,7 +20,9 @@ class UnsplashAPI: UnsplashAPIType {
                 .validate(statusCode: 200...300)
                 .response { response in
                     do {
-                        let response = try JSONDecoder().decode(NetworkResponse<Photo>.self, from: response.data!)
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .iso8601
+                        let response = try decoder.decode(NetworkResponse<Photo>.self, from: response.data!)
                         observer.onNext(response.results)
                         observer.onCompleted()
                     } catch {

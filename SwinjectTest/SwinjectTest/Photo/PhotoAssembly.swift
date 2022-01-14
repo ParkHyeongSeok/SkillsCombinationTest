@@ -27,5 +27,10 @@ class PhotoAssembly: Assembly {
             photoVC.reactor = photoReactor
             return photoVC
         }
+        
+        container.register(PhotoDetailViewController.self, name: nil) { resolver in
+            let photoDetailVC = PhotoDetailViewController()
+            return photoDetailVC
+        }
     }
 }

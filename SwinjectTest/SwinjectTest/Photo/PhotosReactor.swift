@@ -48,10 +48,13 @@ class PhotoReactor: Reactor {
             return Observable.just(.setQuery(text))
         case .searchButtonTapped:
             let query = self.currentState.query
-            return self.unsplashAPI.search(query)
-                .map { [SectionModel<Int, Photo>.init(model: 1, items: $0)] }
-                .map { .setPhotoSection($0) }
-                .debug()
+            return Observable.concat([
+                Observable.just(.setIsLoading(true)),
+                self.unsplashAPI.search(query)
+                    .map { [SectionModel<Int, Photo>.init(model: 1, items: $0)] }
+                    .map { .setPhotoSection($0) },
+                Observable.just(.setIsLoading(false))
+            ])
         }
     }
     
@@ -67,11 +70,5 @@ class PhotoReactor: Reactor {
         }
         return newState
     }
-    
-    private func fetchPhotos(query: String) -> Observable<[Photo]> {
-        return Observable.just([])
-    }
-    
-    
     
 }
