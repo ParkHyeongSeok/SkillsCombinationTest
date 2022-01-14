@@ -38,7 +38,6 @@
 		0361857D279066FE00F1F16B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361857C279066FE00F1F16B /* PhotoCollectionViewCell.swift */; };
 		036185822790D94E00F1F16B /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036185812790D94E00F1F16B /* PhotoDetailViewController.swift */; };
 		036185852790DCF400F1F16B /* PhotoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036185842790DCF400F1F16B /* PhotoCoordinator.swift */; };
-		036185872790E6EA00F1F16B /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036185862790E6EA00F1F16B /* AppAssembly.swift */; };
 		29F525C072D09C49130278FB /* Pods_SwinjectTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0AA8AAB0F75A69DE0AC36F /* Pods_SwinjectTest.framework */; };
 		678E645A6BED8A01D1F1CC46 /* Pods_SwinjectTest_SwinjectTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9372BCEBA1474AA9988F2E6 /* Pods_SwinjectTest_SwinjectTestUITests.framework */; };
 		FEA4130D79D1CBFF2E7F8BE0 /* Pods_SwinjectTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2502999DB7DA2E30639D3870 /* Pods_SwinjectTestTests.framework */; };
@@ -98,7 +97,6 @@
 		0361857C279066FE00F1F16B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		036185812790D94E00F1F16B /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		036185842790DCF400F1F16B /* PhotoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCoordinator.swift; sourceTree = "<group>"; };
-		036185862790E6EA00F1F16B /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		2502999DB7DA2E30639D3870 /* Pods_SwinjectTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwinjectTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35034ED811BA34F9F5CD9B1B /* Pods-SwinjectTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwinjectTest.release.xcconfig"; path = "Target Support Files/Pods-SwinjectTest/Pods-SwinjectTest.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A1E2387CB2F7E9E3E33C1 /* Pods-SwinjectTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwinjectTest.debug.xcconfig"; path = "Target Support Files/Pods-SwinjectTest/Pods-SwinjectTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,10 +163,9 @@
 				0361852B278E62C400F1F16B /* Photo */,
 				03618530278E635800F1F16B /* Model */,
 				03618545278E733F00F1F16B /* NetworkManager */,
-				036184FA278DD09900F1F16B /* AppDelegate.swift */,
 				036184FC278DD09900F1F16B /* SceneDelegate.swift */,
+				036184FA278DD09900F1F16B /* AppDelegate.swift */,
 				03618549278E73D600F1F16B /* AppCoordinator.swift */,
-				036185862790E6EA00F1F16B /* AppAssembly.swift */,
 				03618537278E671200F1F16B /* AppAssembler.swift */,
 				0361856C2790512800F1F16B /* API */,
 				0361852A278E624500F1F16B /* Resources */,
@@ -595,7 +592,6 @@
 				03618565278FBAA100F1F16B /* SessionManager.swift in Sources */,
 				0361855B278F9E8700F1F16B /* RequestParams.swift in Sources */,
 				0361854A278E73D600F1F16B /* AppCoordinator.swift in Sources */,
-				036185872790E6EA00F1F16B /* AppAssembly.swift in Sources */,
 				03618548278E738100F1F16B /* CoordinatorType.swift in Sources */,
 				036184FB278DD09900F1F16B /* AppDelegate.swift in Sources */,
 				03618544278E701E00F1F16B /* UIColor+Extension.swift in Sources */,

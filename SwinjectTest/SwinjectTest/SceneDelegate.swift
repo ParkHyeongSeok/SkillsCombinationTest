@@ -13,11 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: AppCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+        let appAssembler = AppAssembler.assembler
         let appNavigationController = UINavigationController()
         appCoordinator = AppCoordinator(
-            assembler: AppAssembler.assembler,
-            navigationController: appNavigationController)
+            assembler: appAssembler,
+            navigationController: appNavigationController
+        )
         appCoordinator?.start()
         
         guard let windowScene = (scene as? UIWindowScene) else { return }

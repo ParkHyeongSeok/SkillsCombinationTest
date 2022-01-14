@@ -32,7 +32,7 @@ class PhotoViewController: BaseViewController, View {
     }
     
     var disposeBag: DisposeBag = DisposeBag()
-//    let coordinator
+    var coordinator: PhotoCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +68,17 @@ class PhotoViewController: BaseViewController, View {
         searchController.searchBar.rx.searchButtonClicked
             .map { PhotoReactor.Action.searchButtonTapped }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            photoCollectionView.rx.itemSelected,
+            photoCollectionView.rx.modelSelected(Photo.self))
+            .bind(onNext: { [weak self] (indexPath, photo) in
+                self?.photoCollectionView.deselectItem(at: indexPath, animated: false)
+                if let coordinator = self?.coordinator {
+                    coordinator.navigatePhotoDetail(photo: photo)
+                }
+            })
             .disposed(by: disposeBag)
         
         photoCollectionView.rx.setDelegate(self)

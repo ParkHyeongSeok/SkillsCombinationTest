@@ -9,9 +9,6 @@ import UIKit
 import Swinject
 
 class PhotoCoordinator: CoordinatorType {
-    var parentCoordinator: CoordinatorType?
-    var childCoordinator: [CoordinatorType] = []
-    
     var assembler: Assembler
     var navigationController: UINavigationController
     
@@ -22,11 +19,12 @@ class PhotoCoordinator: CoordinatorType {
     
     func start() {
         let photoViewController = self.assembler.resolver.resolve(PhotoViewController.self)!
+        photoViewController.coordinator = self
         navigationController.pushViewController(photoViewController, animated: false)
     }
     
     func navigatePhotoDetail(photo: Photo) {
-        let photoDetailViewController = assembler.resolver.resolve(PhotoDetailViewController.self)!
+        let photoDetailViewController = self.assembler.resolver.resolve(PhotoDetailViewController.self)!
         photoDetailViewController.rendering(photo: photo)
         navigationController.pushViewController(photoDetailViewController, animated: true)
     }

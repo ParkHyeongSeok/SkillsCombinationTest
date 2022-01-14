@@ -10,19 +10,16 @@ import UIKit
 import Swinject
 
 class AppCoordinator: CoordinatorType {
-    var parentCoordinator: CoordinatorType? = nil
-    var childCoordinator: [CoordinatorType] = []
-    
     var assembler: Assembler
     var navigationController: UINavigationController = UINavigationController()
-    
     init(assembler: Assembler, navigationController: UINavigationController) {
         self.assembler = assembler
         self.navigationController = navigationController
     }
     
     func start() {
-        
+        let photoCoordinator = PhotoCoordinator(assembler: self.assembler, navigationController: self.navigationController)
+        photoCoordinator.start()
     }
     
 }

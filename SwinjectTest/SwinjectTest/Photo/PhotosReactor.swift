@@ -68,10 +68,4 @@ class PhotoReactor: Reactor {
         return newState
     }
     
-    private func fetchPhotos(query: String) -> Observable<[Photo]> {
-        return Observable.just([])
-    }
-    
-    
-    
 }
