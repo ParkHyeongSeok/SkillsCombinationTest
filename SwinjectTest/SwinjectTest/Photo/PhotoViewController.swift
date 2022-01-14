@@ -28,7 +28,11 @@ class PhotoViewController: BaseViewController, View {
     }
     
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
-        $0.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        $0.register(Reusable.photoCell)
+    }
+    
+    private let loadingView = UIActivityIndicatorView().then {
+        $0.hidesWhenStopped = true
     }
     
     var disposeBag: DisposeBag = DisposeBag()
@@ -43,7 +47,7 @@ class PhotoViewController: BaseViewController, View {
     private func configureUI() {
         view.backgroundColor = .systemBackground
         self.navigationItem.searchController = searchController
-        self.navigationItem.title = "Search"
+        self.navigationItem.title = "Search Photo"
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
@@ -52,12 +56,21 @@ class PhotoViewController: BaseViewController, View {
         photoCollectionView.snp.makeConstraints { make in
             make.top.left.bottom.right.equalToSuperview()
         }
+        
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     func bind(reactor: PhotoReactor) {
         
         reactor.state.map { $0.photoSections }
         .bind(to: photoCollectionView.rx.items(dataSource: createDataSources()))
+        .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoding }
+        .bind(to: loadingView.rx.isAnimating)
         .disposed(by: disposeBag)
         
         searchController.searchBar.rx.text.orEmpty
@@ -70,7 +83,7 @@ class PhotoViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(
+        Observable.zip(
             photoCollectionView.rx.itemSelected,
             photoCollectionView.rx.modelSelected(Photo.self))
             .bind(onNext: { [weak self] (indexPath, photo) in
@@ -87,10 +100,14 @@ class PhotoViewController: BaseViewController, View {
     
     func createDataSources() -> RxCollectionViewSectionedReloadDataSource<SectionModel<Int, Photo>> {
         return RxCollectionViewSectionedReloadDataSource<SectionModel<Int, Photo>>.init { datasource, collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return .init(frame: .zero) }
+            let cell = collectionView.dequeue(Reusable.photoCell, for: indexPath)
             cell.rendering(photo: item)
             return cell
         }
+    }
+    
+    enum Reusable {
+        static let photoCell = ReusableCell<PhotoCollectionViewCell>()
     }
 
 }

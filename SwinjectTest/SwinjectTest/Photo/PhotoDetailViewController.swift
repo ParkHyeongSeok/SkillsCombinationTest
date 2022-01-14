@@ -13,37 +13,56 @@ import Kingfisher
 class PhotoDetailViewController: UIViewController {
     
     private let photo = UIImageView().then {
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
     }
     
-    private let photoPinch = UIPinchGestureRecognizer(target: self, action: #selector(zoomInOut))
-
+    private let zoomScrollView = UIScrollView().then {
+        $0.zoomScale = 0.5
+        $0.minimumZoomScale = 0.5
+        $0.maximumZoomScale = 2.0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeConstraints()
-        makeGestureRecognizer()
+        configureUI()
+        zoomScrollView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .black
     }
     
     private func makeConstraints() {
-        view.addSubview(photo)
+        view.addSubview(zoomScrollView)
+        zoomScrollView.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
+        }
+        zoomScrollView.addSubview(photo)
         photo.snp.makeConstraints { make in
             make.top.left.bottom.right.equalToSuperview()
         }
     }
-    
-    private func makeGestureRecognizer() {
-        view.addGestureRecognizer(photoPinch)
-    }
-    
-    @objc func zoomInOut(_ pinch: UIPinchGestureRecognizer) {
-        self.photo.transform = self.photo.transform.scaledBy(x: pinch.scale, y: pinch.scale)
-        pinch.scale = 1
-    }
-
 }
 
 extension PhotoDetailViewController {
     func rendering(photo: Photo) {
         self.photo.kf.setImage(with: photo.image.url)
+    }
+}
+
+extension PhotoDetailViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.photo
     }
 }

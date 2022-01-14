@@ -28,6 +28,5 @@ class PhotoCoordinator: CoordinatorType {
         photoDetailViewController.rendering(photo: photo)
         navigationController.pushViewController(photoDetailViewController, animated: true)
     }
-    
-    
 }
+
